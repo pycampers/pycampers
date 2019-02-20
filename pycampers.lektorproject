@@ -1,0 +1,5 @@
+[project]
+name = pycampers
+
+[servers.ghpages]
+target = ghpages+https://pycampers/pycampers.github.io?cname=www.pycampers.com

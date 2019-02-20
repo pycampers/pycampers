@@ -1,0 +1,42 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+<link rel="stylesheet" href="{{ '/static/style.css'|url }}">
+<title>{% block title %}Welcome{% endblock %} — pycampers</title>
+<body>
+  <div class="w-80-l w-90 center">
+    <header class="bg-black white pa3">
+    <h1 class="f1"><a href="/" class="link white i b">PyCampers</a></h1>
+    <span class="f5 i">A techno religion for the future.</span>
+    
+    <hr/>
+
+    <nav>
+      <ul class="pv2">
+        <li{% if this._path == '/' %} class="active"{% endif %}>
+          <a class="link light-blue underline-hover" href="{{ '/'|url }}">Welcome</a>
+        </li>
+        {% for href, title in [
+          ['/blog', 'Blog'],
+          ['/projects', 'Projects'],
+          ['/about', 'About']
+        ] %}
+          <li{% if this.is_child_of(href) %} class="active"{% endif %}>
+            <a class="link light-blue underline-hover" href="{{ href|url }}">{{ title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
+  <div class="ba b--light-gray bw2 pa4"> 
+    {% block body %}{% endblock %}
+  </div>
+  <footer class="bg-black white pa4">
+    <div class="pv3">
+      Visit us on <a class="link light-blue underline-hover" href="https://github.com/pycampers">Github</a>
+      <hr>
+    </div>
+      Written with <3 using <a class="link light-red underline-hover" href="https://www.getlektor.com/">Lektor</a>
+    </footer>
+  </div>
+</body>
